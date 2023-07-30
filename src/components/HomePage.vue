@@ -88,10 +88,10 @@
         </a>
         <p>
           Kayuhan Kulon adalah sebuah padukuhan yang terletak di daerah Bantul,
-          Daerah Istimewa Yogyakarta, Indonesia. Di Google Maps, pengguna dapat
+          Daerah Istimewa Yogyakarta, Indonesia. Di Google Maps, anda dapat
           mencari lokasi Kayuhan Kulon dengan memasukkan nama padukuhan atau
           menggunakan koordinat geografisnya. Setelah menemukan lokasi Kayuhan
-          Kulon, pengguna dapat melihat peta yang menunjukkan wilayah ini
+          Kulon, anda dapat melihat peta yang menunjukkan wilayah ini
           beserta fitur-fitur lain di sekitarnya. Klik gambar diatas untuk
           membuka peta (google maps) ke Padukuhan Kayuhan Kulon
         </p>
