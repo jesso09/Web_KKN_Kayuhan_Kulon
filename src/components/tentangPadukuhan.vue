@@ -24,21 +24,28 @@
         <h2>Struktur Organisasi Padukuhan</h2>
         <img src="@/assets/struktur.jpg" />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, id
-          placeat! Possimus cum, maiores nemo soluta, eum dicta porro ullam, at
-          veniam iusto nostrum quis aliquid corporis dolorem! Soluta ad amet
-          sint quos reiciendis, quia tempore et corporis? Reiciendis fuga
-          officiis quo, hic deserunt facilis neque iusto quis obcaecati vitae
-          possimus. Aspernatur saepe eos nihil asperiores. Dolorum asperiores
-          placeat laborum eius praesentium ipsa sequi, esse delectus, nisi
-          recusandae non architecto rem! Iusto tenetur iure in inventore
-          pariatur voluptatem quas sint optio, voluptate eos est nemo neque
-          perspiciatis commodi porro ipsum a consectetur voluptates expedita
-          ratione asperiores. Distinctio provident deleniti deserunt sed,
-          excepturi blanditiis error et dolor, reprehenderit molestiae a iste
-          necessitatibus? Laudantium accusamus sunt, distinctio itaque molestias
-          quibusdam cumque sequi. Rem quisquam reiciendis error recusandae
-          commodi ipsa totam alias quod.
+          Pembuatan struktur organisasi pada sebuah padukuhan (atau desa)
+          merupakan suatu proses penting dalam upaya meningkatkan pemerataan
+          pembangunan, pelayanan, dan partisipasi masyarakat setempat. Struktur
+          organisasi padukuhan mengacu pada susunan hierarki dan tugas pembagian
+          yang diterapkan untuk mengatur aktivitas dan mengelola berbagai aspek
+          kehidupan di tingkat lokal.
+        </p>
+        <p>
+          Deskripsi struktur organisasi padukuhan dapat meliputi beberapa elemen
+          utama. Pertama, kepala padukuhan atau lurah adalah sosok kepemimpinan
+          utama yang bertanggung jawab atas pelaksanaan kebijakan dan
+          pengambilan keputusan. Di bawah kepala padukuhan, terdapat dewan atau
+          musyawarah padukuhan, yang berfungsi sebagai forum untuk musyawarah
+          dan membahas isu-isu penting bersama dengan masyarakat.
+        </p>
+        <p>
+          Selain itu, struktur organisasi padukuhan juga melibatkan peran kepala
+          dusun atau ketua RT/RW yang bertanggung jawab untuk mengurus dan
+          memfasilitasi kegiatan di tingkat lebih lokal. Mereka memiliki peran
+          strategis dalam mengidentifikasi kebutuhan dan aspirasi masyarakat,
+          mengelola data penduduk, serta menyampaikan informasi dari pemerintah
+          desa ke masyarakat.
         </p>
       </div>
     </section>
