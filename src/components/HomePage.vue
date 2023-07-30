@@ -50,7 +50,8 @@
           <swiper-slide v-for="(post, id) in berita_dukuh" :key="id">
             <div class="card">
               <img :src="getFotoUrl(post.foto)" />
-              <router-link @click="scrollToTop"
+              <router-link
+                @click="scrollToTop"
                 :to="{
                   name: 'detail_post',
                   params: { id: post.id },
@@ -61,15 +62,16 @@
               </router-link>
 
               <h6>{{ formatDate(new Date(post.created_at)) }}</h6>
-              <router-link @click="scrollToTop"
-              :to="{
-                name: 'detail_post',
-                params: { id: post.id },
-              }"
-              class="btn btn-outline-success"
-            >
-              Baca Selengkapnya
-            </router-link>
+              <router-link
+                @click="scrollToTop"
+                :to="{
+                  name: 'detail_post',
+                  params: { id: post.id },
+                }"
+                class="btn btn-outline-success"
+              >
+                Baca Selengkapnya
+              </router-link>
             </div>
           </swiper-slide>
         </swiper>
@@ -85,8 +87,13 @@
           <img src="@/assets/gmaps.png" />
         </a>
         <p>
-          Klik gambar diatas untuk membuka peta (google maps) ke Padukuhan
-          Kayuhan Kulon
+          Kayuhan Kulon adalah sebuah padukuhan yang terletak di daerah Kulon
+          Progo, Daerah Istimewa Yogyakarta, Indonesia. Di Google Maps, pengguna
+          dapat mencari lokasi Kayuhan Kulon dengan memasukkan nama padukuhan
+          atau menggunakan koordinat geografisnya. Setelah menemukan lokasi
+          Kayuhan Kulon, pengguna dapat melihat peta yang menunjukkan wilayah
+          ini beserta fitur-fitur lain di sekitarnya. Klik gambar diatas untuk
+          membuka peta (google maps) ke Padukuhan Kayuhan Kulon
         </p>
       </div>
     </section>
@@ -130,7 +137,6 @@ export default {
     const tanggal = ref("");
     const bulan = ref("");
     const tahun = ref("");
-    
 
     let profiles = ref([
       {
