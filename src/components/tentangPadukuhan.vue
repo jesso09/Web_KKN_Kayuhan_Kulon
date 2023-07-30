@@ -179,6 +179,7 @@ header {
   font-size: 1.4em;
   color: #fff;
   font-weight: 300;
+  text-align: justify;
 }
 
 .sec img {
