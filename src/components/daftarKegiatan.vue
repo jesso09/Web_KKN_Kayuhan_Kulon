@@ -19,7 +19,7 @@
       <img src="../assets/plant2.png" id="plant" />
     </section>
 
-    <section class="sec">
+    <section class="sec" v-if="filteredBerita('Pendidikan') != null">
       <h2>Pendidikan</h2>
       <div class="card-container" v-motion-slide-visible-bottom>
         <swiper
@@ -69,7 +69,7 @@
       </div>
     </section>
 
-    <section class="sec">
+    <section class="sec" v-if="filteredBerita('Inovasi') != null">
       <h2>Inovasi</h2>
       <div class="card-container" v-motion-slide-visible-bottom>
         <swiper
@@ -119,7 +119,7 @@
       </div>
     </section>
 
-    <section class="sec">
+    <section class="sec" v-if="filteredBerita('Lingkungan') != null">
       <h2>Lingkungan</h2>
       <div class="card-container" v-motion-slide-visible-bottom>
         <swiper
