@@ -48,21 +48,13 @@
         <h2>Geografis Padukuhan</h2>
         <img src="@/assets/Peta.jpg" />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem,
-          quisquam sit odit debitis perferendis nisi dolorem modi itaque!
-          Laborum cum repudiandae, consequatur ducimus et deleniti inventore,
-          vel vitae quaerat aliquam autem consectetur omnis? Inventore nobis,
-          vel dolore quo numquam rerum deserunt omnis, incidunt excepturi nisi
-          sequi voluptas a reiciendis odio non dicta corporis? Sequi iusto aut
-          optio excepturi voluptates harum aperiam eveniet quia reiciendis vel,
-          nemo recusandae fugit, praesentium totam, amet obcaecati commodi. Quae
-          in dolore at deserunt inventore expedita doloremque temporibus,
-          reprehenderit voluptatum eius nihil mollitia earum minus provident
-          sit! Tempora fuga delectus cumque ratione suscipit magni, cum dicta
-          quisquam asperiores sed possimus tenetur natus voluptates reiciendis
-          corporis quia aspernatur. Neque eaque esse suscipit provident.
-          Architecto officia aliquam accusamus quidem animi eius fuga. Dolores
-          unde porro officia optio iste?
+          Padukuhan Kayuhan Kulon adalah salah satu padukuhan yang terletak di
+          Desa Triwidadi, Kecamatan Bantul, Yogyakarta, Indonesia. Padukuhan ini
+          merupakan unit administratif terkecil di tingkat desa.Secara
+          geografis, Padukuhan Kayuhan Kulon berada di bagian barat daya Desa
+          Triwidadi. Padukuhan ini mungkin memiliki luas wilayah yang lebih
+          kecil dibandingkan dengan padukuhan lainnya di desa tersebut, karena
+          merupakan bagian dari suatu desa.
         </p>
       </div>
     </section>
@@ -73,12 +65,7 @@
 
 <script>
 import { onMounted } from "vue";
-// import { useRouter } from "vue-router";
-// import axios from "axios";
-// import Swal from "sweetalert2";
-// import NavBar from "./NavBar.vue";
-import Footer from "./globalFooter.vue"
-
+import Footer from "./globalFooter.vue";
 
 export default {
   setup() {
@@ -100,8 +87,7 @@ export default {
     });
   },
   // components: { NavBar }
-  components: { Footer }
-
+  components: { Footer },
 };
 </script>
 
@@ -180,7 +166,7 @@ header {
 
 .sec {
   position: relative;
-  background: #C58E4C;
+  background: #c58e4c;
   padding: 80px;
 }
 
@@ -205,7 +191,7 @@ header {
 
 .card-container {
   overflow-x: auto;
-  background: #C58E4C;
+  background: #c58e4c;
   display: flex;
 }
 

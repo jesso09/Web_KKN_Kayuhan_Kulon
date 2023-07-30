@@ -36,42 +36,41 @@
     <section class="sec" v-if="berita_dukuh != null">
       <h2>Kegiatan Baru ini.</h2>
       <div class="card-container" v-motion-slide-visible-bottom>
-        <swiper :slides-per-view="3"
-    :space-between="600">
-          <swiper-slide
-            v-for="(post, id) in berita_dukuh"
-            :key="id"
-          >
-          <div class="card">
-            <img :src="getFotoUrl(post.foto)" />
-            <router-link
-              :to="{
-                name: 'detail_post',
-                params: { id: post.id },
-              }"
-              class="judul"
-            >
-              <h3>{{ post.judul }}</h3>
-            </router-link>
-            <h6>{{ formatDate(new Date(post.created_at)) }}</h6>
-            <p>{{ post.deskripsi }}</p>
-            <div class="pt-1 mb-4 text-center">
-              <router-link
+        <swiper
+          :slidesPerView="3"
+          :spaceBetween="30"
+          :freeMode="true"
+          :pagination="{
+            clickable: true,
+          }"
+          :mousewheel="true"
+          :navigation="true"
+          :modules="modules"
+        >
+          <swiper-slide v-for="(post, id) in berita_dukuh" :key="id">
+            <div class="card">
+              <img :src="getFotoUrl(post.foto)" />
+              <router-link @click="scrollToTop"
                 :to="{
                   name: 'detail_post',
                   params: { id: post.id },
                 }"
-                type="button"
-                class="btn btn-outline-success"
+                class="judul"
               >
-                Baca Selengkapnya
+                <h3>{{ post.judul }}</h3>
               </router-link>
+
+              <h6>{{ formatDate(new Date(post.created_at)) }}</h6>
+              <router-link @click="scrollToTop"
+              :to="{
+                name: 'detail_post',
+                params: { id: post.id },
+              }"
+              class="btn btn-outline-success"
+            >
+              Baca Selengkapnya
+            </router-link>
             </div>
-          </div>
-          </swiper-slide>
-          <swiper-slide>
-          <div>
-          </div>
           </swiper-slide>
         </swiper>
       </div>
@@ -118,13 +117,12 @@
 import axios from "axios";
 import { onMounted, ref } from "vue";
 import Footer from "./globalFooter.vue";
-import { Navigation, Pagination, Scrollbar, A11y } from "swiper/modules";
+import { FreeMode, Pagination, Navigation, Mousewheel } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/vue";
-// Import Swiper styles
-import "swiper/css";
 import "swiper/css/navigation";
+import "swiper/css";
+import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import "swiper/css/scrollbar";
 
 export default {
   setup() {
@@ -132,6 +130,8 @@ export default {
     const tanggal = ref("");
     const bulan = ref("");
     const tahun = ref("");
+    
+
     let profiles = ref([
       {
         name: "Gede Bagus Jyestha Permana",
@@ -195,15 +195,8 @@ export default {
     });
 
     function getFotoUrl(fileName) {
-      return `https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/public/storage/images/${fileName}`;
+      return `https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/storage/app/public/images/${fileName}`;
     }
-
-    const onSwiper = (swiper) => {
-      console.log(swiper);
-    };
-    const onSlideChange = () => {
-      console.log("slide change");
-    };
 
     return {
       berita_dukuh,
@@ -213,12 +206,19 @@ export default {
       tahun,
       formatDate,
       profiles,
-      onSwiper,
-      onSlideChange,
+      modules: [FreeMode, Pagination, Navigation, Mousewheel],
     };
   },
-  components: { Footer, Swiper, SwiperSlide },
-  modules: [Navigation, Pagination, Scrollbar, A11y],
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
+  },
+  components: {
+    Footer,
+    Swiper,
+    SwiperSlide,
+  },
 };
 </script>
 
@@ -303,7 +303,6 @@ header {
 
 .judul {
   text-decoration: none;
-  font-size: 1.5em;
   color: #000;
   margin-bottom: 10px;
 }
@@ -331,18 +330,11 @@ header {
   border-radius: 1em;
 }
 
-.card-container .swiper{
+.card-container .swiper {
   overflow-x: auto;
+  padding-left: 15px;
   background: #c58e4c;
   display: flex;
-}
-
-.card-container img {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 400px;
-  height: 500px;
-  border-radius: 1em;
 }
 
 .card-container .swiper::-webkit-scrollbar {
@@ -352,24 +344,34 @@ header {
 .card {
   flex: 0 0 auto;
   align-items: center;
-  width: 600px;
-  height: 900px;
-  margin: 0 10px;
+  width: 400px;
+  height: 490px;
   background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 30px 0px 30px 0px;
+  padding: 5px;
+  border-radius: 30px;
   box-shadow: 4px 4px 6px rgba(46, 29, 12, 1);
 }
 
-.card h2 {
+.card img {
+  width: 250px;
+  height: 300px;
+  border-radius: 1em;
+}
+
+.card h3 {
+  font-size: 20px;
   color: #000;
 }
+
 .card h6 {
-  font-size: 16px;
+  margin-top: 1px;
+  font-size: 14px;
   color: rgb(0, 0, 0, 0.5);
 }
 
 .card p {
+  padding: 20px;
+  font-size: 18px;
   color: #000;
 }
 
@@ -393,7 +395,6 @@ header {
 .card-container-profile {
   align-items: center;
   justify-content: center;
-  /* background: #003329; */
   background: #c58e4c;
   display: flex;
 }

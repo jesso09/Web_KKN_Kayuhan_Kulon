@@ -1,32 +1,21 @@
 <template>
   <body>
     <header>
-      <a href="/" style="text-decoration: none">
+      <nav class="nav">
+        <a href="/" style="text-decoration: none">
         <img src="@/assets/icon3.png" class="logo" />
       </a>
-      <nav class="navigation">
         <a href="/">Home</a>
         <a href="/about">Tentang Kayuhan Kulon</a>
         <a href="/activity">Daftar Kegiatan</a>
       </nav>
     </header>
 
-    <section class="parallax">
-      <img src="../assets/hill1.png" id="hill1" />
-      <img src="../assets/hill2.png" id="hill2" />
-      <img src="@/assets/progoView.jpg" />
-      <img src="../assets/hill4.png" id="hill4" />
-      <img src="../assets/hill5.png" id="hill5" />
-      <h2 id="text">Detail Post</h2>
-      <img src="../assets/leaf.png" id="leaf" />
-      <img src="../assets/plant.png" id="plant" />
-    </section>
-
-    <section class="sec">
+    <section class="sec-post">
       <h2>Detail Kegiatan</h2>
-      <div class="card-container">
-        <div class="card">
-          <img :src="getFotoUrl(post.foto)" />
+      <div class="container">
+        <div class="card-detail">
+            <img :src="getFotoUrl(post.foto)" />
           <h2>{{ post.judul }}</h2>
           <h3>{{ post.topik }}</h3>
           <p>{{ post.deskripsi }}</p>
@@ -49,6 +38,7 @@
             <video controls :src="getVideo(post.video)"></video>
           </div>
           <h6>Dibuat tanggal {{ formatDate(new Date(post.created_at)) }}</h6>
+          <h6>Diubah tanggal {{ formatDate(new Date(post.updated_at)) }}</h6>
         </div>
       </div>
     </section>
@@ -84,8 +74,11 @@ export default {
     };
 
     onMounted(() => {
+      
       axios
-        .get(`https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/public/api/berita_dukuh/${route.params.id}`)
+        .get(
+          `https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/public/api/berita_dukuh/${route.params.id}`
+        )
         .then((response) => {
           post.judul = response.data.data.berita_dukuh.judul;
           post.deskripsi = response.data.data.berita_dukuh.deskripsi;
@@ -107,20 +100,6 @@ export default {
           console.log(error.response.data);
         });
 
-        let text = document.getElementById("text");
-        let leaf = document.getElementById("leaf");
-        let hill4 = document.getElementById("hill4");
-        let hill5 = document.getElementById("hill5");
-
-        window.addEventListener("scroll", () => {
-          let value = window.scrollY;
-          text.style.marginTop = value * 2 + "px";
-          leaf.style.top = value * -1.5 + "px";
-          leaf.style.left = value * 1.5 + "px";
-          hill5.style.left = value * 1.5 + "px";
-          hill4.style.left = value * -1.5 + "px";
-        });
-
       const now = new Date();
       bulan.value = now.toLocaleString("default", { month: "long" });
       tahun.value = now.getFullYear();
@@ -128,10 +107,10 @@ export default {
     });
 
     function getFotoUrl(fileName) {
-      return `https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/public/storage/images/${fileName}`;
+      return `https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/storage/app/public/images/${fileName}`;
     }
     function getVideo(fileName) {
-      return `https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/public/storage/videos/${fileName}`;
+      return `https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/storage/app/public/videos/${fileName}`;
     }
 
     return {
@@ -172,40 +151,38 @@ header {
   width: 100%;
   padding: 30px 100px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: center;
   align-items: center;
   z-index: 100;
+  /* position: fixed; */
 }
 
 .logo {
-  width: 60px;
+  width: 120px;
   height: auto;
-  color: #359381;
   pointer-events: none;
-  margin-right: 270px;
+  margin-right: 20px;
 }
 
-.navigation a {
+.nav{
+  position: fixed;
+  background-color: rgb(197, 142, 76, 0.75);
+  border-radius: 40px;
+}
+
+.nav a {
   text-decoration: none;
-  color: #359381;
+  color: #362110;
   padding: 6px 15px;
   border-radius: 20px;
   margin: 0 10px;
   font-weight: 600;
 }
 
-.navigation a:hover,
-.navigation a.active {
-  background: #359381;
+.nav a:hover,
+.nav a.active {
+  background: #362110;
   color: #fff;
-}
-
-.parallax {
-  position: relative;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
 }
 
 #text {
@@ -215,45 +192,30 @@ header {
   text-shadow: 4px 4px 6px rgba(0, 51, 41, 1);
 }
 
-.parallax img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  pointer-events: none;
-}
-
-.sec {
+.sec-post {
   position: relative;
-  background: #003329;
+  /* background: #c58e4c; */
+  background-image: url('../assets/progoView.jpg');
   padding: 100px;
+  background-size: cover; /* atau "contain" */
 }
 
-.sec h2 {
+.sec-post h2 {
   font-size: 3em;
   color: #fff;
   margin-bottom: 10px;
 }
-.sec p {
-  font-size: 1.4em;
-  color: #fff;
-  font-weight: 300;
-}
 
-.sec img {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 800px;
-  height: auto;
-  border-radius: 1em;
-}
-
-.card-container {
-  background: #003329;
+.container {
+  background: transparent;
   display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.card-container img {
+.card-detail img {
+  margin-left: 350px;
+  margin-right: 350px;
   margin-top: 20px;
   margin-bottom: 20px;
   width: 500px;
@@ -261,36 +223,37 @@ header {
   border-radius: 1em;
 }
 
-.card-container::-webkit-scrollbar {
-  display: none;
-}
-
-.card {
-  flex: 0 0 auto;
-  align-items: center;
-  width: 1300px;
+.card-detail {
   margin: 0 10px;
   background-color: #f9f9f9;
   padding: 20px;
   border-radius: 30px 30px 30px 30px;
-  box-shadow: 4px 4px 6px rgb(3, 163, 0, 1);
+  box-shadow: 4px 4px 6px rgba(46, 29, 12, 1);
 }
 
-.card video {
-    width: 800px;
-    height: 500px;
+.card-detail video {
+  margin-left: 220px;
+  margin-right: 220px;
+  width: 800px;
+  height: 500px;
 }
 
-.card h2 {
+.card-detail h2, h4, h3{
+  text-align: center;
   color: #000;
 }
 
-.card h6 {
+.card-detail h6 {
+  margin-left: 180px;
+  margin-right: 180px;
   font-size: 16px;
   color: rgb(0, 0, 0, 0.5);
 }
 
-.card p {
+.card-detail p {
+  text-align: justify;
+  margin-left: 180px;
+  margin-right: 180px;
   color: #000;
 }
 

@@ -7,7 +7,7 @@
       <nav class="navigation">
         <a href="/">Home</a>
         <a href="/about">Tentang Kayuhan Kulon</a>
-        <a href="/activity"  class="active">Daftar Kegiatan</a>
+        <a href="/activity" class="active">Daftar Kegiatan</a>
       </nav>
     </header>
 
@@ -22,103 +22,150 @@
     <section class="sec">
       <h2>Pendidikan</h2>
       <div class="card-container" v-motion-slide-visible-bottom>
-        <div
-          v-for="(post, id) in filteredBerita('Pendidikan')"
-          :key="id"
-          class="card"
+        <swiper
+          :slidesPerView="3"
+          :spaceBetween="30"
+          :freeMode="true"
+          :pagination="{
+            clickable: true,
+          }"
+          :mousewheel="true"
+          :navigation="true"
+          :modules="modules"
         >
-          <img :src="getFotoUrl(post.foto)" />
-          <router-link
-              :to="{
-                name: 'detail_post',
-                params: { id: post.id },
-              }" class="judul"
-            >
-            <h3>{{ post.judul }}</h3>
-          </router-link>
-          <h6>{{ formatDate(new Date(post.created_at)) }}</h6>
-          <p>{{ post.deskripsi }}</p>
-          <div class="pt-1 mb-4 text-center">
-            <router-link
-              :to="{
-                name: 'detail_post',
-                params: { id: post.id },
-              }"
-              class="btn btn-outline-success"
-            >
-              Baca Selengkapnya
-            </router-link>
-          </div>
-        </div>
+          <swiper-slide
+            v-for="(post, id) in filteredBerita('Pendidikan')"
+            :key="id"
+          >
+            <div class="card">
+              <img :src="getFotoUrl(post.foto)" />
+              <router-link
+                @click="scrollToTop"
+                :to="{
+                  name: 'detail_post',
+                  params: { id: post.id },
+                }"
+                class="judul"
+              >
+                <h3>{{ post.judul }}</h3>
+              </router-link>
+              <h6>{{ formatDate(new Date(post.created_at)) }}</h6>
+              <p>{{ truncateText(post.deskripsi, 70) }}</p>
+              <div class="pt-1 mb-4 text-center">
+                <router-link
+                  @click="scrollToTop"
+                  :to="{
+                    name: 'detail_post',
+                    params: { id: post.id },
+                  }"
+                  class="btn btn-outline-success"
+                >
+                  Baca Selengkapnya
+                </router-link>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
       </div>
     </section>
 
     <section class="sec">
       <h2>Inovasi</h2>
       <div class="card-container" v-motion-slide-visible-bottom>
-        <div
-          v-for="(post, id) in filteredBerita('Inovasi')"
-          :key="id"
-          class="card"
+        <swiper
+          :slidesPerView="3"
+          :spaceBetween="30"
+          :freeMode="true"
+          :pagination="{
+            clickable: true,
+          }"
+          :mousewheel="true"
+          :navigation="true"
+          :modules="modules"
         >
-          <img :src="getFotoUrl(post.foto)" />
-          <router-link
-              :to="{
-                name: 'detail_post',
-                params: { id: post.id },
-              }" class="judul"
-            >
-            <h3>{{ post.judul }}</h3>
-          </router-link>
-          <h6>{{ formatDate(new Date(post.created_at)) }}</h6>
-          <p>{{ post.deskripsi }}</p>
-          <div class="pt-1 mb-4 text-center">
-            <router-link
-              :to="{
-                name: 'detail_post',
-                params: { id: post.id },
-              }"
-              type="button"
-              class="btn btn-outline-success"
-            >
-              Baca Selengkapnya
-            </router-link>
-          </div>
-        </div>
+          <swiper-slide
+            v-for="(post, id) in filteredBerita('Inovasi')"
+            :key="id"
+          >
+            <div class="card">
+              <img :src="getFotoUrl(post.foto)" />
+              <router-link
+                @click="scrollToTop"
+                :to="{
+                  name: 'detail_post',
+                  params: { id: post.id },
+                }"
+                class="judul"
+              >
+                <h3>{{ post.judul }}</h3>
+              </router-link>
+              <h6>{{ formatDate(new Date(post.created_at)) }}</h6>
+              <p>{{ truncateText(post.deskripsi, 70) }}</p>
+              <div class="pt-1 mb-4 text-center">
+                <router-link
+                  @click="scrollToTop"
+                  :to="{
+                    name: 'detail_post',
+                    params: { id: post.id },
+                  }"
+                  class="btn btn-outline-success"
+                >
+                  Baca Selengkapnya
+                </router-link>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
       </div>
     </section>
 
     <section class="sec">
       <h2>Lingkungan</h2>
       <div class="card-container" v-motion-slide-visible-bottom>
-        <div
-          v-for="(post, id) in filteredBerita('Lingkungan')"
-          :key="id"
-          class="card"
+        <swiper
+          :slidesPerView="3"
+          :spaceBetween="30"
+          :freeMode="true"
+          :pagination="{
+            clickable: true,
+          }"
+          :mousewheel="true"
+          :navigation="true"
+          :modules="modules"
         >
-          <img :src="getFotoUrl(post.foto)" />
-          <router-link
-              :to="{
-                name: 'detail_post',
-                params: { id: post.id },
-              }" class="judul"
-            >
-            <h3>{{ post.judul }}</h3>
-          </router-link>
-          <h6>{{ formatDate(new Date(post.created_at)) }}</h6>
-          <p>{{ post.deskripsi }}</p>
-          <div class="pt-1 mb-4 text-center">
-            <router-link
-              :to="{
-                name: 'detail_post',
-                params: { id: post.id },
-              }"
-              class="btn btn-outline-success"
-            >
-              Baca Selengkapnya
-            </router-link>
-          </div>
-        </div>
+          <swiper-slide
+            v-for="(post, id) in filteredBerita('Lingkungan')"
+            :key="id"
+          >
+            <div class="card">
+              <img :src="getFotoUrl(post.foto)" />
+              <router-link
+                @click="scrollToTop"
+                :to="{
+                  name: 'detail_post',
+                  params: { id: post.id },
+                }"
+                class="judul"
+              >
+                <h3>{{ post.judul }}</h3>
+              </router-link>
+              <h6>{{ formatDate(new Date(post.created_at)) }}</h6>
+              <p>{{ truncateText(post.deskripsi, 70) }}</p>
+              <div class="pt-1 mb-4 text-center">
+                <router-link
+                  @click="scrollToTop"
+                  :to="{
+                    name: 'detail_post',
+                    params: { id: post.id },
+                  }"
+                  class="btn btn-outline-success"
+                >
+                  Baca Selengkapnya
+                </router-link>
+              </div>
+            </div>
+          </swiper-slide>
+        </swiper>
       </div>
     </section>
   </body>
@@ -129,7 +176,13 @@
 <script>
 import { onMounted, ref } from "vue";
 import axios from "axios";
-import Footer from "./globalFooter.vue"
+import Footer from "./globalFooter.vue";
+import { FreeMode, Pagination, Navigation, Mousewheel } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/vue";
+import "swiper/css/navigation";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
 export default {
   setup() {
@@ -150,7 +203,9 @@ export default {
 
     onMounted(() => {
       axios
-      .get("https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/public/api/berita_dukuh")
+        .get(
+          "https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/public/api/berita_dukuh"
+        )
         .then((response) => {
           berita_dukuh.value = response.data.data;
         })
@@ -158,7 +213,7 @@ export default {
           console.log(error.response.data);
         });
 
-        let text = document.getElementById("text");
+      let text = document.getElementById("text");
       let plant = document.getElementById("plant");
       let leaf = document.getElementById("leaf");
       let left_leaf = document.getElementById("left_leaf");
@@ -180,7 +235,7 @@ export default {
     });
 
     function getFotoUrl(fileName) {
-      return `https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/public/storage/images/${fileName}`;
+      return `https://kayuhankulon.kkn41uajy.cloud/kayuhan_kulon/storage/app/public/images/${fileName}`;
     }
 
     const filteredBerita = (topic) => {
@@ -195,9 +250,26 @@ export default {
       tahun,
       formatDate,
       filteredBerita,
+      modules: [FreeMode, Pagination, Navigation, Mousewheel],
     };
   },
-  components: { Footer }
+  methods: {
+    scrollToTop() {
+      window.scrollTo(0, 0);
+    },
+    truncateText(text, maxLength) {
+      if (text.length > maxLength) {
+        return text.slice(0, maxLength) + "...";
+      } else {
+        return text;
+      }
+    },
+  },
+  components: {
+    Footer,
+    Swiper,
+    SwiperSlide,
+  },
 };
 </script>
 
@@ -276,7 +348,7 @@ header {
 
 .sec {
   position: relative;
-  background: #C58E4C;
+  background: #c58e4c;
   padding: 100px;
 }
 
@@ -293,8 +365,8 @@ header {
   margin-bottom: 10px;
 }
 
-.judul h3:hover {  
-  color: #C58E4C;
+.judul h3:hover {
+  color: #c58e4c;
 }
 
 .sec p {
@@ -311,44 +383,48 @@ header {
   border-radius: 1em;
 }
 
-.card-container {
+.card-container .swiper {
   overflow-x: auto;
-  background: #C58E4C;
+  padding-left: 15px;
+  background: #c58e4c;
   display: flex;
 }
 
-.card-container img {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  width: 500px;
-  height: 400px;
-  border-radius: 1em;
-}
-
-.card-container::-webkit-scrollbar {
+.card-container .swiper::-webkit-scrollbar {
   display: none;
 }
 
 .card {
   flex: 0 0 auto;
   align-items: center;
-  width: 600px;
-  margin: 0 10px;
+  width: 400px;
+  height: 600px;
   background-color: #f9f9f9;
-  padding: 20px;
-  border-radius: 30px 0px 30px 0px;
-  box-shadow: 4px 4px 6px rgb(46, 29, 12, 1);
+  padding: 5px;
+  border-radius: 30px;
+  box-shadow: 4px 4px 6px rgba(46, 29, 12, 1);
 }
 
-.card h2 {
+.card img {
+  width: 250px;
+  height: 300px;
+  border-radius: 1em;
+}
+
+.card h3 {
+  font-size: 20px;
   color: #000;
 }
+
 .card h6 {
-  font-size: 16px;
+  margin-top: 1px;
+  font-size: 14px;
   color: rgb(0, 0, 0, 0.5);
 }
 
 .card p {
+  padding: 20px;
+  font-size: 18px;
   color: #000;
 }
 
